@@ -248,7 +248,7 @@
       <label style="font-weight:bold;">Nama:</label>
       <input id="gtNama" style="width:100%;padding:10px;margin:6px 0 12px;border:1px solid #ccc;border-radius:8px;" placeholder="Nama kamu">
       <label style="font-weight:bold;">Ucapan &amp; Doa:</label>
-      <textarea id="gtPesan" rows="3" style="width:100%;padding:10px;margin:6px 0 12px;border:1px solid #ccc;border-radius:8px;" placeholder="Tulis ucapan dan doa..."></textarea>
+      <textarea id="gtPesan" rows="3" style="width:100%;padding:10px;margin:6px 0 12px;border:1px solid #ccc;border-radius:8px;" placeholder="Tulis ucapan dan doa..."></textareaX>
       <button class="btn" style="width:100%;margin-top:0;" onclick="kirimUcapan()">💌 Kirim Ucapan</button>
     </div>
     <div id="daftarUcapan"></div>
@@ -439,6 +439,7 @@ function simpan() {
 function status(t){ document.getElementById("statusData").innerText = t; }
 function buatFinal() {
   var tpl = document.getElementById("tpl").value.trim();
+  tpl = tpl.split("</textareaX>").join("</textarea>");   // kembalikan tag yang diplesetkan
   return tpl.replace("var DATA_EMBED = null;", function(){ return "var DATA_EMBED = " + JSON.stringify(ambilData()) + ";"; });
 }
 function preview() {
